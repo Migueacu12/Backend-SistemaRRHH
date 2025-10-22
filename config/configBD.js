@@ -6,15 +6,15 @@ const connection = mysql.createConnection({
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME || 'sistemarrhh',
-  // port: process.env.DB_PORT || 3306 // descomenta si usas otro puerto
+  // port: process.env.DB_PORT || 3306,
 });
 
 connection.connect((err) => {
   if (err) {
-    console.error('Error de conexión a la base de datos:', err.message || err);
-    process.exit(1); // opcional: salir si no se conecta
+    console.error('Error conectando a la BD (configBD):', err.message || err);
+    process.exit(1);
   }
-  console.log('Conexión a la base de datos exitosa');
+  console.log('Conexión a la base de datos exitosa (configBD)');
 });
 
 module.exports = connection;

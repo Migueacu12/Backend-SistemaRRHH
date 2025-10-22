@@ -1,32 +1,42 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../configBD'); // Importa la configuración de la base de datos
+const db = require('../config/db');
 
-const Usuario = sequelize.define('Usuario', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
+const Usuario = {
+  // obtener todos los usuarios
+  getAll(callback) {
+    db.query('SELECT id, nombre, email, rol FROM usuarios', (err, results) => {
+      callback(err, results);
+    });
   },
-  nombre: {
-    type: DataTypes.STRING,
-    allowNull: false
+
+  // obtener un usuario por id
+  getById(id, callback) {
+    db.query('SELECT id, nombre, email, rol FROM usuarios WHERE id = ?', [id], (err, results) => {
+      callback(err, results[0]);
+    });
   },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true
+
+  // crear usuario (password ya debe venir hasheado desde el controlador)
+  create(data, callback) {
+    const sql = 'INSERT INTO usuarios (nombre, email, password, rol) VALUES (?, ?, ?, ?)';
+    db.query(sql, [data.nombre, data.email, data.password, data.rol], (err, result) => {
+      callback(err, result);
+    });
   },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false
+
+  // eliminar usuario
+  delete(id, callback) {
+    db.query('DELETE FROM usuarios WHERE id = ?', [id], (err, result) => {
+      callback(err, result);
+    });
   },
-  tipoUsuarioId: {
-    type: DataTypes.INTEGER,
-    allowNull: false
+
+  // actualizar usuario (sin password)
+  update(id, data, callback) {
+    const sql = 'UPDATE usuarios SET nombre = ?, email = ?, rol = ? WHERE id = ?';
+    db.query(sql, [data.nombre, data.email, data.rol, id], (err, result) => {
+      callback(err, result);
+    });
   }
-}, {
-  tableName: 'usuarios',   // El nombre real de tu tabla en MySQL
-  timestamps: false        // Cambia a true si usas createdAt/updatedAt
-});
+};
 
 module.exports = Usuario;
