@@ -1,6 +1,6 @@
 /* Tabla encargada de almacenar los bancos que pueden tener los empelados */
 const { Model, DataTypes} = require('sequelize');
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 class BancoModel extends Model {};
 

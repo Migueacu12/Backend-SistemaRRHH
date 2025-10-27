@@ -1,6 +1,6 @@
 /* Tabla que almacena la información de las posibles opciones de tipo tiempo que tienen los empleados */
 const { Model, DataTypes} = require('sequelize');
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 class TiempoModel extends Model {};
 

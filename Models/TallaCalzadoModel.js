@@ -1,7 +1,7 @@
 /* Tabla encargada de almacenar todos lo posibles valores de tallas que pueden tener los empleados */
 
 const { Model, DataTypes} = require('sequelize');
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 class TallaCalzadoModel extends Model {};
 

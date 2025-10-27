@@ -6,7 +6,7 @@
 const { Model, DataTypes} = require('sequelize');
 
 //Traemos nuestra respectiva configuración de la base de datos y la guardamos en la variable de sequelize
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 //Definimos una clase hija que heredara todos los atributos de la clase Model
 class CredencialModel extends Model {};

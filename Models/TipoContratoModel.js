@@ -1,6 +1,6 @@
 /* Tabla que contiene la informacion de los tipos de contrato que pueden tener los empleados */
 const { Model, DataTypes} = require('sequelize');
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 class TipoContratoModel extends Model {};
 

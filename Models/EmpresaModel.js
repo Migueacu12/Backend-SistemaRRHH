@@ -1,6 +1,6 @@
 /* Tabla  que almacenara las empresas de la compañia para relacionar empleados con estas */
 const { Model, DataTypes} = require('sequelize');
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 class EmpresaModel extends Model {};
 

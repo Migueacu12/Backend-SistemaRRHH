@@ -5,7 +5,7 @@
 const { Model, DataTypes} = require('sequelize');
 
 //Se importa la conexion a la base de datos
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 //Se crea clase que heredara todos los atributos de Model
 class TipoUsuarioModel extends Model {};

@@ -29,7 +29,7 @@ const TipoUsuarioModel = require('../Models/TipoUsuarioModel');
 
 const { validationResult } = require('express-validator');
 const EmpresaModel = require('../Models/EmpresaModel');
-const sequelize = require('../Database/configBD');
+const sequelize = require('../config/configBD');
 const res = require('express/lib/response');
 const CredencialModel = require('../Models/CredencialModel');
 const TipoDocumentoModel = require('../Models/TipoDocumentoModel');

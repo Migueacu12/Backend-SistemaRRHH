@@ -1,6 +1,6 @@
 /* Tabla que contiene los posibles salarios de los empleados ya que varios de estos salarios se repiten */
 const { Model, DataTypes} = require('sequelize');
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 class SalarioModel extends Model {};
 

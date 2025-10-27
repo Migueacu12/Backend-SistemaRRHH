@@ -1,5 +1,5 @@
 const EmpleadoModel = require('../Models/EmpleadoModel')
-const sequelize = require('../Database/configBD')
+const sequelize = require('../config/configBD');
 
 const JefeDirectoController = {
 

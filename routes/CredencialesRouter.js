@@ -1,10 +1,10 @@
 const router = require("express").Router();
 
-const checkLogin = require('../../middlewares/checkTokenLog')
+const checkLogin = require('../middlewares/checkTokenLog')
 
 
-const CredencialesController = require('../../controllers/CredencialController');
-const { checkRolAdmin } = require("../../middlewares/checkRol");
+const CredencialesController = require('../controllers/CredencialController');
+const { checkRolAdmin } = require("../middlewares/checkRol");
 
 router.post('/login', CredencialesController.login)
 

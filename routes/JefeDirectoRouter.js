@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
-const JefeDirectoController = require('../../controllers/JefeDirectoController');
-const { checkRolSoporte } = require("../../middlewares/checkRol");
+const JefeDirectoController = require('../controllers/JefeDirectoController');
+const { checkRolSoporte } = require("../middlewares/checkRol");
 
 router.get('/', JefeDirectoController.getAll)
 

@@ -1,10 +1,10 @@
 
 const router = require("express").Router();
 
-const { validationCentroCosto } = require('../../validations/validationsCentroCosto')
+const { validationCentroCosto } = require('../validations/validationsCentroCosto')
 
-const CentroCostoController = require("../../controllers/CentroCostoController");
-const { checkRolSoporte } = require("../../middlewares/checkRol");
+const CentroCostoController = require("../controllers/CentroCostoController");
+const { checkRolSoporte } = require("../middlewares/checkRol");
 
 router.get('/', CentroCostoController.getAll)
 

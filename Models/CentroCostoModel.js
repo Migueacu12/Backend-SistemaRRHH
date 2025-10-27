@@ -2,7 +2,7 @@
 //?Explicación basica se encuentra en los otros Modelos
 
 const { Model, DataTypes} = require('sequelize');
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 class CentroCostoModel extends Model {};
 

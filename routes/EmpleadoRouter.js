@@ -1,10 +1,9 @@
-
 const router = require("express").Router();
 
-const EmpleadoController = require("../../controllers/EmpleadoController");
-const { checkRolSoporte, checkRolAdmin } = require("../../middlewares/checkRol");
+const EmpleadoController = require("../controllers/EmpleadoController");
+const { checkRolSoporte, checkRolAdmin } = require("../middlewares/checkRol");
 
-const { validationEmpleado } = require('../../validations/validationEmpleado')
+const { validationEmpleado } = require('../validations/validationEmpleado')
 
 router.get('/', checkRolAdmin, EmpleadoController.getAll)
 

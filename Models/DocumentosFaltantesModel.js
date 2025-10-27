@@ -1,6 +1,6 @@
 /* Tabla debil que almacena que documentos le faltan a cada usuario */
 const { Model, DataTypes} = require('sequelize');
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 class DocumentosFaltantesModel extends Model {};
 

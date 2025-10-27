@@ -1,6 +1,6 @@
 /* Tabla que hace referencia a los tipos de cuenta que pueden tener los empleados */
 const { Model, DataTypes} = require('sequelize');
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 class TipoCuentaModel extends Model {};
 
