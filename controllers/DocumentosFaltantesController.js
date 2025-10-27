@@ -1,6 +1,6 @@
-const DocumentosFaltantesModel = require('../Database/Model/DocumentosFaltantesModel')
-const sequelize = require('../Database/configBD')
-const TipoDocumentoModel = require('../Database/Model/TipoDocumentoModel')
+const DocumentosFaltantesModel = require('../Models/DocumentosFaltantesModel')
+const sequelize = require('../config/configBD');
+const TipoDocumentoModel = require('../Models/TipoDocumentoModel')
 
 const DocumentosFaltantesController = {
 

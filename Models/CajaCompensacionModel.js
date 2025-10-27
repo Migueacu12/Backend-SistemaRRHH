@@ -1,6 +1,6 @@
 /* Tabla que almacenara toda la información relacionada con la caja de compensacion familiar */
 const { Model, DataTypes} = require('sequelize');
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 class CajaCompensacionModel extends Model {};
 

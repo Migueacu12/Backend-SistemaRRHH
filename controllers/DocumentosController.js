@@ -1,4 +1,4 @@
-const DocumentoModel = require("../Database/Model/DocumentoModel")
+const DocumentoModel = require("../Models/DocumentoModel")
 
 const fs = require('fs').promises
 

@@ -1,8 +1,8 @@
-const sequelize = require('../Database/configBD')
+const sequelize = require('../config/configBD');
 
 const defaultController=( model, id_def, talla_def, name, fk_emp = name)=>{
 
-    model = require(`../Database/Models/${model}`)
+    model = require(`../Models/${model}`)
     const { validationResult } = require('express-validator')
 
     const Controller = {

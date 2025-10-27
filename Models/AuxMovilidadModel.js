@@ -1,6 +1,6 @@
 /* Tabla que contiene los datos referentes a el auxilio de movilidad */
 const { Model, DataTypes} = require('sequelize');
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 class AuxMovilidadModel extends Model {};
 

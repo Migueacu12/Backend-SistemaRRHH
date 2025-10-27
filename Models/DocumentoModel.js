@@ -7,7 +7,7 @@
 const { Model, DataTypes} = require('sequelize');
 
 //Llamamos a sequelize nuestra configuración de la conexion a la base de datos
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 //creamos clase hija que ereda los atributos y metodos de la super clase Model
 class DocumentoModel extends Model {};

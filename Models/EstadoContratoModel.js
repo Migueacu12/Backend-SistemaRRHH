@@ -1,6 +1,6 @@
 /* Tabla que contiene los datos de los posibles estados de contrato que pueden llegar a tener los empleados */
 const { Model, DataTypes} = require('sequelize');
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 class EstadoContratoModel extends Model {};
 

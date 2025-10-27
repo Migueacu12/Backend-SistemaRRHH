@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
-const DocumentosFaltantesController = require('../../controllers/DocumentosFaltantesController');
-const { checkRolAdmin } = require("../../middlewares/checkRol");
+const DocumentosFaltantesController = require('../controllers/DocumentosFaltantesController');
+const { checkRolAdmin } = require("../middlewares/checkRol");
 
 router.post('/', checkRolAdmin, DocumentosFaltantesController.create)
 

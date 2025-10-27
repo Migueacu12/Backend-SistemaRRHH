@@ -1,50 +1,54 @@
-//Index.js es el archivo principal del API donde ejecutamos nuestro servidor y definimos los metodos que se van a usar
-
 const express = require('express');
 const app = express();
-
 require('dotenv').config();
 
-// Configuración de la base de datos
-const sequelize = require('./Database/Models/Database/configBD');
+const sequelize = require('./config/configBD.js');
 const PORT = process.env.PORT || 3003;
 
-// Relación de modelos
-require('./Database/Models/Database/relacionesBD');
+// Cargar relaciones (archivo Models/Database/relacionesBD.js)
+try {
+  require('./Models/Database/relacionesBD');
+} catch (err) {
+  console.error('Aviso: no se pudo cargar Models/Database/relacionesBD:', err.message);
+}
 
-// Middlewares para recibir parámetros por el cuerpo de la consulta (tipo JSON)
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-// Configura el límite de tamaño máximo para las solicitudes
+// Middlewares
+const cors = require('cors');
 app.use(express.json({ limit: '250mb' }));
 app.use(express.urlencoded({ limit: '250mb', extended: true }));
-
-// Middleware de CORS para evitar errores de cabeceras
-const cors = require('cors');
 app.use(cors());
 
-/** 
- * =========== SECCIÓN DE AUTENTICACIÓN ===========
- */
-const authRouter = require('./Database/Models/router/routes/authRouter');
-app.use('/api-rrhh/auth', authRouter);
+// Rutas de autenticación y principales
+try {
+  const authRouter = require('./routes/authRouter');
+  app.use('/api-rrhh/auth', authRouter);
+} catch (err) {
+  console.error('Aviso: no se pudo cargar routes/authRouter:', err.message);
+}
 
-// Rutas principales
-app.use('/api-rrhh', require('./Database/Models/router/routes/router'));
+try {
+  app.use('/api-rrhh', require('./routes/router'));
+} catch (err) {
+  console.error('Aviso: no se pudo cargar routes/router:', err.message);
+}
 
-/**
- * =========== MANEJO DE ERRORES GLOBAL ===========
- */
-const errorHandler = require('./Database/Models/middlewares/errorHandler');
-app.use(errorHandler);
+// Manejador global de errores (si existe)
+try {
+  const errorHandler = require('./middlewares/errorHandler');
+  app.use(errorHandler);
+} catch (err) {
+  console.error('Aviso: no se pudo cargar middlewares/errorHandler:', err.message);
+}
 
 app.listen(PORT, () => {
-    console.log(`El proyecto ha sido arrancado en http://localhost:${PORT}`);
+  console.log(`El proyecto ha sido arrancado en http://localhost:${PORT}`);
 
-    sequelize.sync({ force: false }).then(() => {
-        console.log('Conexion a la bd exitosa');
-    }).catch(error => {
-        console.log('Error al conectar la bd: ' + error)
-    });
+  // Sincronizar modelos con la BD
+  if (sequelize && typeof sequelize.sync === 'function') {
+    sequelize.sync({ force: false })
+      .then(() => console.log('Conexion a la bd exitosa'))
+      .catch(error => console.log('Error al conectar la bd: ' + error));
+  } else {
+    console.warn('La instancia de sequelize no está disponible. Revisa config/configBD.js');
+  }
 });

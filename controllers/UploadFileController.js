@@ -1,6 +1,6 @@
 const req = require("express/lib/request")
-const DocumentoModel = require("../Database/Model/DocumentoModel")
-const EmpleadoModel = require("../Database/Model/EmpleadoModel")
+const DocumentoModel = require("../Models/DocumentoModel")
+const EmpleadoModel = require("../Models/EmpleadoModel")
 
 const fs = require('fs').promises
 

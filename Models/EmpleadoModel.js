@@ -7,7 +7,7 @@
 const { Model, DataTypes} = require('sequelize');
 
 //Importamos la conexion a la BD 
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 //Creamos una clase que hereda todos los atributos de la superclase Model
 class EmpleadoModel extends Model {};

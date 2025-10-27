@@ -1,12 +1,12 @@
 
 const router = require("express").Router();
 const multer = require("multer");
-const UploadFileController = require("../../controllers/UploadFileController");
+const UploadFileController = require("../controllers/UploadFileController");
 const path = require('path');
 
 const diskstorage = multer.diskStorage(
     {
-        destination: path.join(__dirname,'../../images/PerfilImages/'),
+        destination: path.join(__dirname,'../images/PerfilImages/'),
         filename:(req, file,cb)=>{
             cb(null,'SIGE_PerfilImage_userId' + req.idEmpleado + '_' + file.originalname)
         }

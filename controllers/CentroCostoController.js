@@ -1,8 +1,8 @@
-const CentroCostoModel = require('../Database/Model/CentroCostoModel')
-const CiudadModel = require('../Database/Model/CiudadModel')
+const CentroCostoModel = require('../Models/CentroCostoModel')
+const CiudadModel = require('../Models/CiudadModel')
 const { validationResult } = require('express-validator')
-const EmpleadoModel = require('../Database/Model/EmpleadoModel')
-const { sequelize } = require('../Database/Model/CentroCostoModel')
+const EmpleadoModel = require('../Models/EmpleadoModel')
+const { sequelize } = require('../Models/CentroCostoModel')
 
 const CentroCostoControler = {
 

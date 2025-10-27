@@ -1,6 +1,6 @@
 /* Tabla que contiene todos los datos relacionados a la pension que pueden tener los empleados */
 const { Model, DataTypes} = require('sequelize');
-const sequelize = require('../configBD');
+const sequelize = require('../config/configBD');
 
 class PensionModel extends Model {};
 
