@@ -1,8 +1,8 @@
-const { sequelize } = require('../Database/Model/EmpleadoModel')
+const { sequelize } = require('../Models/EmpleadoModel')
 
 const defaultController=( model, id_def, monto_def, name, fk_emp = name)=>{
 
-    model = require(`../Database/Models/${model}`)
+    model = require(`../Modelss/${model}`)
     const { validationResult } = require('express-validator')
 
     const Controller = {

@@ -1,39 +1,40 @@
-const EmpleadoModel = require('../Database/Model/EmpleadoModel')
+// Inicio del archivo - requires corregidos
+const EmpleadoModel = require('../Models/EmpleadoModel');
 
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs');
 
-const TipoIdentificacionModel = require('../Database/Model/TipoIdentificacionModel')
-const CiudadModel = require('../Database/Model/CiudadModel')
-const NacionalidadModel = require('../Database/Model/NacionalidadModel')
-const EstadoCivilModel = require('../Database/Model/EstadoCivilModel')
-const CentroCostoModel = require('../Database/Model/CentroCostoModel')
-const CargoModel = require('../Database/Model/CargoModel')
-const TipoContratoModel = require('../Database/Model/TipoContratoModel')
-const TiempoModel = require('../Database/Model/TiempoModel')
-const EstadoContratoModel = require('../Database/Model/EstadoContratoModel')
-const SalarioModel = require('../Database/Model/SalarioModel')
-const AuxMovilidadModel = require('../Database/Model/AuxMovilidadModel')
-const EstudiosRealizadosModel = require('../Database/Model/EstudiosRealizadosModel')
-const BancoModel = require('../Database/Model/BancoModel')
-const TipoCuentaModel = require('../Database/Model/TipoCuentaModel')
-const EpsModel = require('../Database/Model/EpsModel')
-const ArlModel = require('../Database/Model/ArlModel')
-const PensionModel = require('../Database/Model/PensionModel')
-const CesantiasModel = require('../Database/Model/CesantiasModel')
-const CajaCompensacionModel = require('../Database/Model/CajaCompensacionModel')
-const TallaCamisaModel = require('../Database/Model/TallaCamisaModel')
-const TallaPantalonModel = require('../Database/Model/TallaPantalonModel')
-const TallaCalzadoModel = require('../Database/Model/TallaCalzadoModel')
-const TipoUsuarioModel = require('../Database/Model/TipoUsuarioModel')
+const TipoIdentificacionModel = require('../Models/TipoIdentificacionModel');
+const CiudadModel = require('../Models/CiudadModel');
+const NacionalidadModel = require('../Models/NacionalidadModel');
+const EstadoCivilModel = require('../Models/EstadoCivilModel');
+const CentroCostoModel = require('../Models/CentroCostoModel');
+const CargoModel = require('../Models/CargoModel');
+const TipoContratoModel = require('../Models/TipoContratoModel');
+const TiempoModel = require('../Models/TiempoModel');
+const EstadoContratoModel = require('../Models/EstadoContratoModel');
+const SalarioModel = require('../Models/SalarioModel');
+const AuxMovilidadModel = require('../Models/AuxMovilidadModel');
+const EstudiosRealizadosModel = require('../Models/EstudiosRealizadosModel');
+const BancoModel = require('../Models/BancoModel');
+const TipoCuentaModel = require('../Models/TipoCuentaModel');
+const EpsModel = require('../Models/EpsModel');
+const ArlModel = require('../Models/ArlModel');
+const PensionModel = require('../Models/PensionModel');
+const CesantiasModel = require('../Models/CesantiasModel');
+const CajaCompensacionModel = require('../Models/CajaCompensacionModel');
+const TallaCamisaModel = require('../Models/TallaCamisaModel');
+const TallaPantalonModel = require('../Models/TallaPantalonModel');
+const TallaCalzadoModel = require('../Models/TallaCalzadoModel');
+const TipoUsuarioModel = require('../Models/TipoUsuarioModel');
 
-const { validationResult } = require('express-validator')
-const EmpresaModel = require('../Database/Model/EmpresaModel')
-const sequelize = require('../Database/configBD')
-const res = require('express/lib/response')
-const CredencialModel = require('../Database/Model/CredencialModel')
-const TipoDocumentoModel = require('../Database/Model/TipoDocumentoModel')
-const TipoidentificacionModel = require('../Database/Model/TipoIdentificacionModel')
-const { monthsShort } = require('moment')
+const { validationResult } = require('express-validator');
+const EmpresaModel = require('../Models/EmpresaModel');
+const sequelize = require('../Database/configBD');
+const res = require('express/lib/response');
+const CredencialModel = require('../Models/CredencialModel');
+const TipoDocumentoModel = require('../Models/TipoDocumentoModel');
+// const TipoidentificacionModel = require('../Models/TipoIdentificacionModel'); // eliminado duplicado
+const { monthsShort } = require('moment');
 
 const Controller = {
 
@@ -279,14 +280,11 @@ const Controller = {
 
             res.status(201).json("Creado con exito")
         }).catch((err)=>{
-            if(err.errors[0].type==='unique violation')
+            if(err.errors && err.errors[0] && err.errors[0].type==='unique violation')
                 res.json(err.errors[0].message)
             else
                 res.json({error:'Error al crear', err:err})
         })
-
-        
-
     },
 
     update: async(req, res)=>{
@@ -586,4 +584,4 @@ const Controller = {
 
 
 }
-module.exports = Controller 
+module.exports = Controller

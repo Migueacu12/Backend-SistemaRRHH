@@ -1,10 +1,10 @@
-const CredencialModel = require('../Database/Model/CredencialModel')
+const CredencialModel = require('../Models/CredencialModel')
 
 require ('dotenv').config();
 
-const EmpleadoModel = require('../Database/Model/EmpleadoModel')
+const EmpleadoModel = require('../Models/EmpleadoModel')
 
-const TipoUsuarioModel = require('../Database/Model/TipoUsuarioModel')
+const TipoUsuarioModel = require('../Models/TipoUsuarioModel')
 
 const { validationResult } = require('express-validator')
 

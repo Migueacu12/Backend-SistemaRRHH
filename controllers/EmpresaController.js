@@ -1,4 +1,4 @@
-const EmpresaModel = require('../Database/Model/EmpresaModel')
+const EmpresaModel = require('../Models/EmpresaModel')
 const { validationResult } = require('express-validator')
 const sequelize = require('../Database/configBD')
 
