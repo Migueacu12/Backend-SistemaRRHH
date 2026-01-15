@@ -1,6 +1,7 @@
-const express = require('express');
+﻿const express = require('express');
 const app = express();
 require('dotenv').config();
+const path = require('path');
 
 const sequelize = require('./config/configBD.js');
 const PORT = process.env.PORT || 3003;
@@ -40,14 +41,23 @@ try {
   console.error('Aviso: no se pudo cargar middlewares/errorHandler:', err.message);
 }
 
+// Servir archivos estáticos desde la carpeta 'public'
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Enviar public/index.html para cualquier ruta que NO empiece por /api-rrhh
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api-rrhh')) return next();
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 app.listen(PORT, () => {
   console.log(`El proyecto ha sido arrancado en http://localhost:${PORT}`);
 
   // Sincronizar modelos con la BD
   if (sequelize && typeof sequelize.sync === 'function') {
     sequelize.sync({ force: false })
-      .then(() => console.log('Conexion a la bd exitosa'))
-      .catch(error => console.log('Error al conectar la bd: ' + error));
+      .then(() => console.log('Conexión a la BD exitosa'))
+      .catch(error => console.log('Error al conectar la BD: ' + error));
   } else {
     console.warn('La instancia de sequelize no está disponible. Revisa config/configBD.js');
   }
